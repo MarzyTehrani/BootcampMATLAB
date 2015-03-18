@@ -1,0 +1,39 @@
+function [modelCoeffs] = fitQuadModel(X, y)
+% fitQuadModel Generic fucntion for fitting quadratic models to data.
+% see also surf, meshgrid, linspace, ones.
+% X --> matrix
+% y --> vector
+
+% clean the data:
+[XClean, yClean] = removeNaNs (X,y);
+
+% Fitting the model:
+modelCoeffs = fitModel (XClean, yClean);
+
+% Visualise the results:
+visResults(X, y, XClean, modelCoeffs);
+
+end %fitQuadModel
+
+function [XClean, yClean] = removeNaNs (X,y)
+
+missingVals = any([X, y], 2);
+XClean = X(~missingVals, :);
+yClean = y(~missingVals);
+
+end %removeNaNs
+
+function modelCoeffs = fitModel (XClean, yClean)
+
+nVars = size(XClean, 2); % 1 or 2.
+switch nVars
+    case 1
+        A = [ones(size(XClean)), XClean, Xclean.^2];
+        modelCoeffs = A\yClean;
+    case 2
+        x1 = Xclean(:, 1); x2 = XClean(
+    otherwise
+end %fitModel
+
+function visResults(x, y, xClean, modelCoeffs)
+end %visResults
