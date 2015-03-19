@@ -1,10 +1,11 @@
 %% test function
+load S02_medData
 
-x = MedData.Age;
+X = MedData.Age;
 y = MedData.BPDiff; %Pulse pressure
-modelCoeffs = fitQuadModel(x,y)
+modelCoeffs = fitQuadModel(X,y)
 
 height = MedData.Height; %x1
 waist = MedData.Waist; %x2
 weight = MedData.Weight; %y
-modelCoeffs = fitQuadModel([heigh, waist], weight)
+modelCoeffs = fitQuadModel([height, waist], weight)
